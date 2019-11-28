@@ -31,13 +31,35 @@ The following document will explain in detail the steps taken in ```run_analysis
     * Using the ```rbind()``` function, datasets ```subject_test``` and ```subject_train``` are merged to create ```subject```: 10299 observations of 1 variable.
     * Using the ```rbind()``` function, datasets ```subject```, ```X``` and ```Y``` are merged to create ```Merged_data```: 10299 observations of 3 variables. 
     
+***
 
-```{r}
-plot(cars)
-```
+4. **EXTRACTION OF THE MEAN AND STANDARD DEVIATION OF EACH MEASURMENT**
+   * ```FinalData``` is created by selecting from ```Merged_data``` only those variables which contain in their name the strings ```"mean"``` and       ```"std"``` and the columns subject and code.
+   
+***
+   
+5. **USE DESCRIPTIVE ACTIVITY NAMES TO NAME THE ACTIVITIES IN THE DATASET**
+   * The code numbers found in the variable ```code``` in ```FinalData``` are replaced with the name of their respective activities using the data set ```activities```.
+  
+***
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+6. **Appropiately label the dataset with descriptive variable names**
+   * ```code``` column was renamed ```activities```
+   * All ```Acc``` in column´s name were replaced by ```Accelerometer```.
+   * All ```Gyro``` in column´s name were replaced by ```Gyroscope```.
+   * All ```BodyBody``` in column´s name were replaced by ```Body```. 
+   * All ```Mag``` in column´s name were replaced by ```Magnitude```.
+   * All ```^t``` in column´s name were replaced by ```Time```.
+   * All ```^f``` in column´s name were replaced by ```Frequency```. 
+   * All ```tBody``` in column´s name were replaced by ```TimeBody```.
+   * All ```-mean()``` in column´s name were replaced by ```Mean```.
+   * All ```-std()``` in column´s were replaced by ```STD```.
+   * All ```-freq()``` in column´s were replaced by ```Frequency```.
+   * All ```angle``` in column´s name were replaced by ```Angle```.
+   * All ```gravity``` in column´s name were replaced by ```Gravity```.
+   
+***
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+7. **From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject**   
+   * ```Assingment_table``` is created by finding the mean and standard deviation of each subject and activity after being grouped by the R function ```group_by()```.
+   * Create document Assingment_table.txt from ```Assingment_table```.
